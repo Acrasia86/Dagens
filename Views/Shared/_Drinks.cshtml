@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@if (Model.CategoryName == "Drinkar")
+{
+    <h1 class="mma-header">@Model.CategoryName</h1>
+    <div class="mma">
+        <div class="mma-container">
+
+            @foreach (var article in Model.CategoryArticles)
+            {
+                @if (DateTime.Today == article.Article.CreatedAt)
+                {
+            <div class="stats">
+                <h3 class="info-header">@article.Article.Title</h3>
+                <h5 class="info"  id="drinks-country">From: @article.Article.FromCountry</h5>
+                <h6 class="info" id="drinks-ingredients">Ingredients: @article.Article.Ingredients</h6>
+                <div class="info">@article.Article.Description</div>
+
+                <span class="info"><small>Published at: @article.Article.CreatedAt.ToString("MMMM dd, yyyy")</small></span>
+            </div>
+                    <img class="mma-picture" src="@article.Article.ImageUrl" />
+                }
+            }
+
+        </div>
+    </div>
+
+    <div class="mma-btn-startsida">
+        <a class="btn btn-danger tillbaka-mma" href="/">Till Startsidan</a>
+    </div>
+}
